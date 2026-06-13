@@ -25,7 +25,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Step 4: Build his Dockerfile and push it live to his Docker Hub repository
       - name: Build and Push to Docker Hub
@@ -40,9 +40,9 @@ jobs:
       - name: Execute Remote SSH Pull
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASSWORD }}
+          host: '${{ secrets.SERVER_HOST }}'
+          username: '${{ secrets.SERVER_USER }}'
+          password: '${{ secrets.SERVER_PASSWORD }}' # Wrapped in single quotes to protect the password's # symbols
           port: 22
           script: |
             # Safely clear out any old files in his server folder
