@@ -186,6 +186,10 @@ function applyFunction(name, arg) {
       return Math.sqrt(arg);
     case "log":
       return Math.log(arg);
+    case "ln":
+      return Math.log(arg);
+    case "exp":
+      return Math.exp(arg);
     case "abs":
       return Math.abs(arg);
     case "ceil":
